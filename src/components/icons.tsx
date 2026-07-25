@@ -100,3 +100,54 @@ export function ArrowRightIcon(props: SVGProps<SVGSVGElement>) {
     </svg>
   );
 }
+
+export function GridIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" {...props}>
+      <rect x="3.5" y="3.5" width="7" height="7" rx="1.2" />
+      <rect x="13.5" y="3.5" width="7" height="7" rx="1.2" />
+      <rect x="3.5" y="13.5" width="7" height="7" rx="1.2" />
+      <rect x="13.5" y="13.5" width="7" height="7" rx="1.2" />
+    </svg>
+  );
+}
+
+export function BadgeIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" {...props}>
+      <circle cx="12" cy="9" r="6" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="m8.5 14-1.8 7 5.3-3 5.3 3-1.8-7" />
+    </svg>
+  );
+}
+
+export function TagIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" {...props}>
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M11.5 4H5a1 1 0 0 0-1 1v6.5a1 1 0 0 0 .3.7l9 9a1 1 0 0 0 1.4 0l6.5-6.5a1 1 0 0 0 0-1.4l-9-9a1 1 0 0 0-.7-.3Z"
+      />
+      <circle cx="8.5" cy="8.5" r="1.25" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
+export function CreditCardIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" {...props}>
+      <rect x="3" y="5.5" width="18" height="13" rx="2" />
+      <path strokeLinecap="round" d="M3 9.5h18" />
+      <path strokeLinecap="round" d="M6.5 14.5h4" />
+    </svg>
+  );
+}
+
+export function CheckIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" {...props}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="m5 12.5 4.5 4.5L19 7" />
+    </svg>
+  );
+}
