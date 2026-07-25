@@ -1,0 +1,118 @@
+[
+  {
+    "slug": "posebna-ponuda",
+    "name": "Posebna ponuda",
+    "count": 2,
+    "children": []
+  },
+  {
+    "slug": "laminati",
+    "name": "Laminati",
+    "count": 45,
+    "children": [
+      {
+        "slug": "8mm-32-klasa-riblja-kost",
+        "name": "8mm | 32 klasa Riblja kost",
+        "count": 8
+      },
+      {
+        "slug": "8mm-32-klasa-atlantic-kolekcija",
+        "name": "8mm | 32 klasa Atlantic kolekcija",
+        "count": 7
+      },
+      {
+        "slug": "10mm-33-klasa-vlagootporni-atlantic",
+        "name": "10mm | 33 klasa vlagootporni Atlantic",
+        "count": 10
+      },
+      {
+        "slug": "12mm-33-klasa-vlagootporni-atlantic",
+        "name": "12mm | 33 klasa vlagootporni Atlantic",
+        "count": 5
+      },
+      {
+        "slug": "12mm-33-klasa-vlagootporni-classen",
+        "name": "12mm | 33 klasa vlagootporni Classen",
+        "count": 3
+      },
+      {
+        "slug": "10mm-32-klasa-krono",
+        "name": "10mm | 32 klasa Krono",
+        "count": 2
+      },
+      {
+        "slug": "12mm-33-klasa-egger",
+        "name": "12mm | 33 klasa Egger",
+        "count": 3
+      },
+      {
+        "slug": "8mm-33-klasa-vlagootporni-krono",
+        "name": "8mm | 33 klasa vlagootporni Krono",
+        "count": 8
+      },
+      {
+        "slug": "egger",
+        "name": "Egger",
+        "count": 4
+      },
+      {
+        "slug": "krono-original",
+        "name": "Krono original",
+        "count": 37
+      },
+      {
+        "slug": "classen",
+        "name": "Classen",
+        "count": 3
+      }
+    ]
+  },
+  {
+    "slug": "vinil-podovi",
+    "name": "Vinil podovi",
+    "count": 62,
+    "children": [
+      {
+        "slug": "5mm-winflex-elegance-kolekcija",
+        "name": "Winflex Elegance kolekcija",
+        "count": 9
+      },
+      {
+        "slug": "classic-kolekcija",
+        "name": "5mm | W42 Classic kolekcija",
+        "count": 11
+      },
+      {
+        "slug": "5mm-w33-42-rigid-kolekcija",
+        "name": "5mm W33 | 42 Rigid kolekcija",
+        "count": 11
+      },
+      {
+        "slug": "55mm-w33-42-stone-kolekcija",
+        "name": "5,5mm W33 | 42 Stone kolekcija",
+        "count": 7
+      },
+      {
+        "slug": "6mm-w33-42-stabilo-kolekcija",
+        "name": "6mm W33 | 42 Stabilo kolekcija",
+        "count": 11
+      },
+      {
+        "slug": "55mm-w33-42-riblja-kost",
+        "name": "5,5mm W33 | 42 Riblja kost",
+        "count": 7
+      },
+      {
+        "slug": "6mm-w33-42-chewron-kolekcija",
+        "name": "6mm W33 | 42 Chewron kolekcija",
+        "count": 6
+      }
+    ]
+  },
+  {
+    "slug": "lajsne",
+    "name": "Lajsne",
+    "count": 0,
+    "children": []
+  }
+]
