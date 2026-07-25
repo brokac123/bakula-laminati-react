@@ -46,7 +46,7 @@ export default function ProductDetail() {
 
       <div className="mt-6 grid gap-10 lg:grid-cols-2">
         {/* Gallery */}
-        <div>
+        <div className="min-w-0">
           <div className="aspect-square overflow-hidden rounded-2xl border border-wood-100 bg-wood-50">
             {images[activeImage] ? (
               <img
@@ -79,7 +79,7 @@ export default function ProductDetail() {
         </div>
 
         {/* Info */}
-        <div>
+        <div className="min-w-0">
           <div className="flex flex-wrap gap-2">
             {top && (
               <span className="rounded-full bg-gold-400/15 px-3 py-1 text-xs font-medium text-gold-600">
