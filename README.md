@@ -51,6 +51,17 @@ PLAYWRIGHT_BASE_URL=https://bakula-laminati-react.vercel.app npm run test:e2e
 
 Runs across Google Chrome (the installed browser, via Playwright's `channel: "chrome"`), Firefox, WebKit, and mobile/tablet viewports (`playwright.config.ts`); Firefox/WebKit only run the `@smoke`-tagged subset. CI runs the suite on every push/PR via `.github/workflows/playwright.yml`.
 
+### Gating deploys on tests passing
+
+The workflow's `deploy` job pushes to Vercel production itself (via the Vercel CLI) after the `test` job passes, instead of relying on Vercel's own git integration to deploy independently. Two one-time setup steps, both in dashboards this repo can't reach on its own:
+
+1. **Add three GitHub Actions secrets** (repo → Settings → Secrets and variables → Actions):
+   - `VERCEL_TOKEN` — create one at [vercel.com/account/tokens](https://vercel.com/account/tokens)
+   - `VERCEL_ORG_ID` and `VERCEL_PROJECT_ID` — found in the Vercel project's Settings → General page
+2. **Turn off Vercel's automatic production deploys** so it isn't also deploying independently of the test result: in the Vercel project, Settings → Git → disable automatic deployments for the `main` branch (exact wording varies by Vercel's current UI).
+
+Until step 1 is done, the `deploy` job just logs a warning and skips itself — pushes still run tests, they just don't deploy anything.
+
 ## Killing a stray dev server
 
 If `npm run dev` is running in a background/detached process and you don't have its terminal handy, find and kill whatever's on port 5173:
