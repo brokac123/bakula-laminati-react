@@ -31,6 +31,26 @@ The contact form sends via [EmailJS](https://www.emailjs.com) so it works withou
 node scripts/scrape.mjs
 ```
 
+## End-to-end tests
+
+Playwright drives the app through a Page Object Model in `e2e/`, covering navigation, catalog filtering/search/pagination, product detail, contact form (validation + submission, with the EmailJS network call mocked so no real email is sent), and responsive layout.
+
+```bash
+npm run test:e2e            # full suite (headless), builds + serves the app itself
+npm run test:e2e:ui         # interactive UI mode
+npm run test:e2e:headed     # headed browser
+npm run test:e2e:report     # open the HTML report from the last run
+npm run test:e2e:typecheck  # type-check e2e/ without running tests
+```
+
+Tests run against a production preview build (`npm run build && npm run preview`), started automatically. To target a different environment instead (e.g. the live Vercel deployment):
+
+```bash
+PLAYWRIGHT_BASE_URL=https://bakula-laminati-react.vercel.app npm run test:e2e
+```
+
+Runs across Google Chrome (the installed browser, via Playwright's `channel: "chrome"`), Firefox, WebKit, and mobile/tablet viewports (`playwright.config.ts`); Firefox/WebKit only run the `@smoke`-tagged subset. CI runs the suite on every push/PR via `.github/workflows/playwright.yml`.
+
 ## Killing a stray dev server
 
 If `npm run dev` is running in a background/detached process and you don't have its terminal handy, find and kill whatever's on port 5173:
