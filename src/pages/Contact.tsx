@@ -36,7 +36,7 @@ export default function Contact() {
     }
   }, []);
 
-  const mailtoHref = `mailto:info@bakula-laminati.hr?subject=${encodeURIComponent(
+  const mailtoHref = `mailto:luka.bakula1@gmail.com?subject=${encodeURIComponent(
     subject || "Upit s web stranice",
   )}&body=${encodeURIComponent(
     `${message}\n\n${name}\n${email}\n${phone}`,
