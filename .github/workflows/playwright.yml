@@ -25,7 +25,10 @@ jobs:
         run: npm run test:e2e:typecheck
 
       - name: Install Playwright browsers
-        run: npx playwright install --with-deps chrome firefox webkit
+        # "chrome" is the real Google Chrome channel used by the "chrome"
+        # project; "chromium" is the bundled engine the "Mobile Chrome"
+        # device-emulation project runs on - both are needed separately.
+        run: npx playwright install --with-deps chrome chromium firefox webkit
 
       - name: Run Playwright tests
         run: npm run test:e2e
