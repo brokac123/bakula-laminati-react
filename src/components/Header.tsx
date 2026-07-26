@@ -23,11 +23,12 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-wood-100 bg-cream-50/95 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
-        <Link to="/" className="flex items-center gap-2 shrink-0" onClick={() => setOpen(false)}>
-          <span className="font-heading text-2xl font-semibold tracking-tight text-wood-800">
-            Bakula
-          </span>
-          <span className="hidden text-sm text-wood-500 sm:inline">laminati</span>
+        <Link to="/" className="flex items-center shrink-0" onClick={() => setOpen(false)}>
+          <img
+            src="/images/brand/logo-main.png"
+            alt="Bakula laminati"
+            className="h-12 w-auto sm:h-14"
+          />
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex">

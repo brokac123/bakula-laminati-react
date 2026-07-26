@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className="border-t border-wood-100 bg-wood-800 text-wood-100">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-2 lg:grid-cols-4">
         <div>
-          <span className="font-heading text-2xl font-semibold text-cream-50">Bakula</span>
+          <img src="/images/brand/logo-white.png" alt="Bakula laminati" className="h-16 w-auto" />
           <p className="mt-4 text-sm leading-relaxed text-wood-200">
             Trgovački obrt s tradicijom koja traje već 10 godina. Svojim kupcima nudimo veliki
             izbor laminata, vinilnih podova i lajsni.{" "}
@@ -92,8 +92,7 @@ export default function Footer() {
 
       <div className="border-t border-wood-700/60">
         <div className="mx-auto max-w-6xl px-4 py-5 text-center text-xs text-wood-300 sm:px-6">
-          &copy; {new Date().getFullYear()} Bakula laminati, vl. Damir Bakula. Matični broj:
-          97605930. Sva prava pridržana.
+          &copy; {new Date().getFullYear()} Bakula laminati, vl. Damir Bakula. Sva prava pridržana.
         </div>
       </div>
     </footer>

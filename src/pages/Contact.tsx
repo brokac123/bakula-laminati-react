@@ -98,13 +98,9 @@ export default function Contact() {
               <dt className="text-wood-400">Naziv obrta</dt>
               <dd className="font-medium">Bakula, trgovački obrt</dd>
             </div>
-            <div className="flex justify-between border-b border-wood-100 py-2.5">
+            <div className="flex justify-between py-2.5">
               <dt className="text-wood-400">Vlasnik</dt>
               <dd className="font-medium">Damir Bakula</dd>
-            </div>
-            <div className="flex justify-between border-b border-wood-100 py-2.5">
-              <dt className="text-wood-400">Matični broj</dt>
-              <dd className="font-medium">97605930</dd>
             </div>
           </dl>
 
