@@ -22,11 +22,15 @@ export async function sendContactMessage(data: ContactFormData) {
     SERVICE_ID,
     TEMPLATE_ID,
     {
-      from_name: data.name,
-      from_email: data.email,
-      phone: data.phone,
-      subject: data.subject,
+      // Matches the EmailJS "Contact Us" default template's variable names
+      // ({{name}}, {{email}}, {{title}}, {{message}}) rather than our own
+      // form field names, since that's the template actually in use.
+      name: data.name,
+      email: data.email,
+      title: data.subject,
       message: data.message,
+      phone: data.phone,
+      time: new Date().toLocaleString("hr-HR"),
     },
     { publicKey: PUBLIC_KEY },
   );
