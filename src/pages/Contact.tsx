@@ -13,6 +13,22 @@ interface RememberedDetails {
 
 type Status = "idle" | "sending" | "success" | "error";
 
+// Native browser validation messages ("Please fill in this field") are tied
+// to the OS/browser locale, not the page's language - override them with
+// Croatian copy so they match the rest of the form.
+function handleInvalid(e: React.InvalidEvent<HTMLInputElement | HTMLTextAreaElement>) {
+  const el = e.currentTarget;
+  if (el.validity.valueMissing) {
+    el.setCustomValidity("Molimo ispunite ovo polje.");
+  } else if (el.validity.typeMismatch) {
+    el.setCustomValidity("Unesite ispravnu email adresu.");
+  }
+}
+
+function clearValidity(e: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>) {
+  e.currentTarget.setCustomValidity("");
+}
+
 export default function Contact() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -162,6 +178,8 @@ export default function Contact() {
                   rows={5}
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
+                  onInvalid={handleInvalid}
+                  onInput={clearValidity}
                   placeholder="Vaša poruka…"
                   className="w-full rounded-xl border border-wood-600 bg-wood-700/40 px-4 py-3 text-sm text-cream-50 placeholder:text-wood-300 focus:border-gold-400 focus:outline-none"
                 />
@@ -177,6 +195,8 @@ export default function Contact() {
                     required
                     value={name}
                     onChange={(e) => setName(e.target.value)}
+                    onInvalid={handleInvalid}
+                    onInput={clearValidity}
                     placeholder="Ime i prezime"
                     className="w-full rounded-xl border border-wood-600 bg-wood-700/40 px-4 py-2.5 text-sm text-cream-50 placeholder:text-wood-300 focus:border-gold-400 focus:outline-none"
                   />
@@ -191,6 +211,8 @@ export default function Contact() {
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    onInvalid={handleInvalid}
+                    onInput={clearValidity}
                     placeholder="Email"
                     className="w-full rounded-xl border border-wood-600 bg-wood-700/40 px-4 py-2.5 text-sm text-cream-50 placeholder:text-wood-300 focus:border-gold-400 focus:outline-none"
                   />
@@ -220,6 +242,8 @@ export default function Contact() {
                     required
                     value={subject}
                     onChange={(e) => setSubject(e.target.value)}
+                    onInvalid={handleInvalid}
+                    onInput={clearValidity}
                     placeholder="Predmet"
                     className="w-full rounded-xl border border-wood-600 bg-wood-700/40 px-4 py-2.5 text-sm text-cream-50 placeholder:text-wood-300 focus:border-gold-400 focus:outline-none"
                   />

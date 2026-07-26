@@ -50,9 +50,7 @@ export default function Catalog() {
         <span className="text-wood-600">Katalog</span>
       </nav>
       <h1 className="mt-2 font-heading text-3xl font-semibold text-wood-800">{heading}</h1>
-      {!query && (
-        <p className="mt-1 text-sm text-wood-400">{filtered.length} proizvoda</p>
-      )}
+      <p className="mt-1 text-sm text-wood-400">{filtered.length} proizvoda</p>
 
       <div className="mt-8 grid grid-cols-1 gap-10 lg:grid-cols-[240px_1fr]">
         <CategorySidebar />

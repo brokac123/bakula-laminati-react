@@ -67,7 +67,7 @@ export default function Header() {
 
         <a
           href="tel:+385915222559"
-          className="hidden items-center gap-2 rounded-full bg-wood-800 px-4 py-2 text-sm font-medium text-cream-50 transition-colors hover:bg-wood-700 lg:flex"
+          className="hidden items-center gap-2 rounded-full bg-wood-800 px-4 py-2 text-sm font-medium text-cream-50 transition-colors hover:bg-wood-700 sm:flex"
         >
           <PhoneIcon className="size-4" />
           091-522-2559
