@@ -1,5 +1,10 @@
 import { expect, test } from "../fixtures/test";
-import { findProductWithFullSpec, findProductWithRelated, products } from "../utils/testData";
+import {
+  findProductWithFullSpec,
+  findProductWithMultipleImages,
+  findProductWithRelated,
+  products,
+} from "../utils/testData";
 
 test.describe("Product detail page", () => {
   test("renders name, image and all populated spec sections @smoke", async ({
@@ -44,5 +49,16 @@ test.describe("Product detail page", () => {
     await productDetailPage.goto(product.slug);
     await productDetailPage.requestQuoteLink.click();
     await expect(page).toHaveURL(/\/kontakt$/);
+  });
+
+  test("clicking a gallery thumbnail swaps the main image", async ({ productDetailPage }) => {
+    const product = findProductWithMultipleImages();
+    await productDetailPage.goto(product.slug);
+
+    await expect(productDetailPage.mainImage).toHaveAttribute("src", product.localImages[0]);
+    await expect(productDetailPage.thumbnailButtons).toHaveCount(product.localImages.length);
+
+    await productDetailPage.thumbnailButtons.nth(1).click();
+    await expect(productDetailPage.mainImage).toHaveAttribute("src", product.localImages[1]);
   });
 });

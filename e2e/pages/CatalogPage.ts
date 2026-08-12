@@ -10,6 +10,8 @@ export class CatalogPage extends BasePage {
   readonly emptyState: Locator;
   readonly lajsneNotice: Locator;
   readonly pagination: Locator;
+  readonly recentlyViewedHeading: Locator;
+  readonly recentlyViewedLinks: Locator;
 
   constructor(page: Page) {
     super(page);
@@ -23,6 +25,10 @@ export class CatalogPage extends BasePage {
     this.emptyState = page.getByText("Nema pronađenih proizvoda.");
     this.lajsneNotice = page.getByText("Lajsne uskoro dostupne");
     this.pagination = page.getByRole("button", { name: /^\d+$/ });
+    this.recentlyViewedHeading = page.getByRole("heading", { name: "Nedavno pregledano" });
+    // The sidebar's only links to /proizvod/* are the recently-viewed items -
+    // its category tree links all point at /katalog?kategorija=*.
+    this.recentlyViewedLinks = page.locator('aside a[href^="/proizvod/"]');
   }
 
   async goto(params: { kategorija?: string; trazi?: string; stranica?: number } = {}) {
