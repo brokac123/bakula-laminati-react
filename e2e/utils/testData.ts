@@ -40,6 +40,21 @@ export function findProductWithRelated(): Product {
   return product;
 }
 
+export function findProductWithMultipleImages(): Product {
+  const product = allProducts.find((p) => p.localImages.length > 1);
+  if (!product) throw new Error("No product with multiple images found in fixture data.");
+  return product;
+}
+
+/** A subcategory small enough to fit on one page, to keep the test independent of pagination. */
+export function findSubCategoryFittingOnePage(pageSize: number): { slug: string; name: string } {
+  for (const category of allCategories) {
+    const sub = category.children.find((c) => c.count > 0 && c.count <= pageSize);
+    if (sub) return sub;
+  }
+  throw new Error(`No subcategory with 1-${pageSize} products found in fixture data.`);
+}
+
 export function findTopLevelCategoryWithMultiplePages(pageSize: number): Category {
   const category = allCategories.find((c) => countByCategorySlug(c.slug) > pageSize);
   if (!category) {

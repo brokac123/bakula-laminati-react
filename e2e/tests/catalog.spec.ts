@@ -1,7 +1,9 @@
 import { expect, test } from "../fixtures/test";
 import {
+  categories,
   countByCategorySlug,
   EMPTY_CATEGORY_SLUG,
+  findSubCategoryFittingOnePage,
   findTopLevelCategoryWithMultiplePages,
   products,
   searchCount,
@@ -41,6 +43,28 @@ test.describe("Catalog listing", () => {
     await firstCard.click();
     await expect(page).toHaveURL(new RegExp(`${href}$`));
   });
+
+  test("filtering by a subcategory shows the matching subset and heading", async ({
+    catalogPage,
+  }) => {
+    const sub = findSubCategoryFittingOnePage(PAGE_SIZE);
+    const expected = countByCategorySlug(sub.slug);
+    await catalogPage.goto({ kategorija: sub.slug });
+
+    await expect(catalogPage.heading).toHaveText(sub.name);
+    await expect(catalogPage.productCount).toHaveText(`${expected} proizvoda`);
+    await expect(catalogPage.productCards).toHaveCount(expected);
+  });
+
+  test("sidebar category badges match the real product counts", async ({ catalogPage }) => {
+    await catalogPage.goto();
+    for (const category of categories) {
+      // categoryLink() only matches a link whose accessible name ends in the
+      // exact count, so a stale/wrong badge fails this with a clear "not
+      // found" instead of a misleading pass.
+      await expect(catalogPage.categoryLink(category.name)).toBeVisible();
+    }
+  });
 });
 
 test.describe("Search", () => {
@@ -60,6 +84,20 @@ test.describe("Search", () => {
     await catalogPage.search("zzz-nepostojeci-proizvod-zzz");
     await expect(catalogPage.emptyState).toBeVisible();
   });
+
+  test("the search box reflects ?trazi= when landing on a search URL directly", async ({
+    catalogPage,
+  }) => {
+    await catalogPage.goto({ trazi: "hrast" });
+    await expect(catalogPage.searchInput).toHaveValue("hrast");
+  });
+
+  test("submitting an empty search just shows the full catalog", async ({ catalogPage }) => {
+    await catalogPage.goto({ trazi: "hrast" });
+    await catalogPage.search("");
+    await expect(catalogPage.heading).toHaveText("Katalog proizvoda");
+    await expect(catalogPage.productCount).toHaveText(`${products.length} proizvoda`);
+  });
 });
 
 test.describe("Pagination", () => {
@@ -77,5 +115,13 @@ test.describe("Pagination", () => {
     await catalogPage.pageButton(2).click();
     const remaining = total - PAGE_SIZE;
     await expect(catalogPage.productCards).toHaveCount(Math.min(remaining, PAGE_SIZE));
+  });
+
+  test("an out-of-range ?stranica= clamps to the last real page instead of showing nothing", async ({
+    catalogPage,
+  }) => {
+    await catalogPage.goto({ kategorija: category.slug, stranica: 999 });
+    const lastPageCount = total - PAGE_SIZE * (totalPages - 1);
+    await expect(catalogPage.productCards).toHaveCount(lastPageCount);
   });
 });

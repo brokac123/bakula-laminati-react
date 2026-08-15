@@ -61,6 +61,17 @@ test.describe("Mobile navigation", () => {
     // Navigating away closes the panel (component unmounts on route change).
     await expect(homePage.header.mobileNav).not.toBeVisible();
   });
+
+  test("catalog's nested subcategory links are reachable in the mobile menu", async ({
+    page,
+    homePage,
+  }) => {
+    await homePage.goto();
+    await homePage.header.openMobileMenu();
+
+    await homePage.header.mobileNav.getByRole("link", { name: "Vinil podovi", exact: true }).click();
+    await expect(page).toHaveURL(/kategorija=vinil-podovi/);
+  });
 });
 
 test.describe("Footer", () => {
